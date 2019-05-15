@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from api.views import chat_blueprint
 from api.models.models_1 import User
@@ -8,9 +8,6 @@ app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'Fuck the police'
 jwt = JWTManager(app)
 
-@chat_blueprint.route('/', methods=['GET', 'POST'])
-def index():
-    return '<h1>Hello app</h1>'
 
 @chat_blueprint.route('/signup', methods=['POST'])
 def add_user():
