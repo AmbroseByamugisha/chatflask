@@ -11,8 +11,8 @@ class Database_1:
     creates a schema for the databases
     """
     def __init__(self):
-        database_url = app.config['DATABASE_URL']
-        postgres://bsjsghxjvfheeo:68720d88d9d0dc239389fb26d699d4357abc7941835046a7882bc0978876067b@ec2-50-19-114-27.compute-1.amazonaws.com:5432/d9tt1lsndqhn2n
+        # database_url = app.config['DATABASE_URL']
+        database_url = postgres://bsjsghxjvfheeo:68720d88d9d0dc239389fb26d699d4357abc7941835046a7882bc0978876067b@ec2-50-19-114-27.compute-1.amazonaws.com:5432/d9tt1lsndqhn2n
         parsed_url = urlparse(database_url)
         dbname = parsed_url.path[1:]
         user = parsed_url.username
