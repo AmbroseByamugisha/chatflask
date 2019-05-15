@@ -32,4 +32,4 @@ def fetch_all_messages():
         newlist.append(message)
     for user in users:
         user_list.append(user) 
-    return jsonify({"userName": user_list}),200
+    return jsonify({"message":"users received successfully", "userName": user_list}),200

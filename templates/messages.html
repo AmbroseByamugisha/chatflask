@@ -3,11 +3,17 @@
   <head>
       <script src="../js_scripts/main.js"></script>
       <script src="../js_scripts/get_Msg.js"></script>
+      <link rel="stylesheet" href="css/sample.css">
     <title>Flask_Chat_App</title>
   </head>
   <body>
+    <a onclick="Logout()">logout</a>
     <p id="users-list"></p>
     <p id="messages-list"></p>
-    <button type="submit" class="button" onclick="fetchAll()" >Get Message</button>
+    <button type="submit" class="button" onclick="fetchUsers()" >Get Users</button>
+    <form>
+      <input type="text" class="form-input" id="message" placeholder="Enter message" required="required">
+    </form>
+    <button type="submit" class="button" onclick="sendMessage()" >Send Message</button>
   </body>
 </html>

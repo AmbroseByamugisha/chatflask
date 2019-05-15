@@ -47,7 +47,7 @@ function logIn() {
     .then(response => {
         localStorage.setItem("accesstoken",response.access_token);
         if (response.message=='user logged in Successfully'){    
-            window.location.replace('session.html');;
+            window.location.replace('messages.html');;
         }    
         else{
             alert(response.message);
@@ -79,9 +79,21 @@ function sendMessage() {
     .then(response => {
         alert(response.message);
         if (response.message=="msg sent successfully"){
-        window.location.replace('session.html');
+        window.location.replace('messages.html');
         }
-    })
+        else{
+            alert(response.message);
+            if (response.message=='user does not exist, do you want to signup'){
+                window.location.replace('signup.html');
+            }
+            else{
+                window.location.reload()
+            }
+    }
+})
 }
 
-      
+function Logout() {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+}

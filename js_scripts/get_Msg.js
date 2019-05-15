@@ -70,7 +70,7 @@ function fetchUsers(){
     
 }
     
-fetchUsers()
+//fetchUsers()
 
 function fetchAll(){
 
@@ -95,7 +95,7 @@ fetch(msgUrl, {
     });
     
 }  
-// fetchAll() 
+fetchAll() 
 // all the data is one li
 // each should be its own li list element
 
