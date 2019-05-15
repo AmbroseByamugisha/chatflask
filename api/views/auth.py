@@ -8,6 +8,10 @@ app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'Fuck the police'
 jwt = JWTManager(app)
 
+@chat_blueprint.route('/', methods=['GET', 'POST'])
+def index():
+    return '<h1>Hello app</h1>'
+
 @chat_blueprint.route('/signup', methods=['POST'])
 def add_user():
     user_input = request.json
