@@ -2,7 +2,8 @@ from flask import Flask, jsonify, request, render_template
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from api.views import chat_blueprint
 from api.models.models_1 import User
-from api.models.validators import is_valid_user_name, is_valid_email, is_valid_password
+from api.models.validators import is_valid_user_name, is_valid_email, is_valid_password, \
+    is_valid_key_word
 from api.models.database import db_connection
 app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'Fuck the police'
@@ -12,6 +13,10 @@ jwt = JWTManager(app)
 @chat_blueprint.route('/signup', methods=['POST'])
 def add_user():
     user_input = request.json
+
+    if is_valid_key_word(user_input):
+        return is_valid_key_word(user_input), 400
+        
     if is_valid_user_name(user_input):
         return is_valid_user_name(user_input), 400
 
@@ -20,6 +25,7 @@ def add_user():
 
     if is_valid_password(user_input):
         return is_valid_password(user_input), 400
+
     user_name = request.json.get('user_name')
     email = request.json.get('email')
     password = request.json.get('password')
@@ -27,10 +33,10 @@ def add_user():
     user_1 = User(user_name, email, password)
 
     if db_connection.fetch_user(user_1):
-        return jsonify({"message": "user already exists"}), 201
+        return jsonify({"message": "user already exists"}), 400
 
     db_connection.add_user(user_1)
-    return jsonify({"message": "you have created an account"})
+    return jsonify({"message": "you have created an account"}), 201
 
 @chat_blueprint.route('/login', methods=['POST'])
 def login():

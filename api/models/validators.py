@@ -32,3 +32,7 @@ def is_valid_price(json_iput):
     if (type(a) != int):
         return jsonify({"message": "price should be a digit"})
         
+
+def is_valid_key_word(json_input):
+    if not json_input.get('user_name'):
+        return jsonify({"msg": "username key word not in proper format"})
